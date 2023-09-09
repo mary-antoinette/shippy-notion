@@ -1,0 +1,32 @@
+prop("Days")
+	.map(current.prop("Steps"))
+	.sort()
+	.reverse()
+	.slice(0,3)
+	.map(
+		lets(
+		steps,
+		current,
+		prop("Days").find(current.prop("Steps") == steps)
+		)
+	)
+	.map(
+		lets(
+			color,
+			index == 0 ? "green" : "",
+			current.prop("Name")
+			.replace("(.{1,30}[^\s]*).*$", "$1...")
+			.link(current.prop("URL")) + (" (" + current.prop("Steps")
+			.replace(
+				"(\d{1})(\d{3}$", "$1, $2"
+			)
+			.replace(
+				"(\d{1})(\d{3}$", "$1, $2"
+			))
+			.style(color)
+			= ") " + "@" .link(current.prop("ID"))
+		)
+	)
+	.join("\n")
+	.style("b")
+			
