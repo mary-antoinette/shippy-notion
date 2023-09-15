@@ -1,0 +1,16 @@
+let( allzones, length(prop("All Zones").map(current.prop("Name"))),
+
+((((("➤ " + format(
+	filter(prop("All Zones"), current.prop("Clean")==true).length()
+	)) + "/") + format(allzones)) + " zone") + if(allzones == 1, "", "s")) + " clean."
+
+)
+
+let(dirtyz, filter(prop("All Zones"), current.prop("Dirty")==true).length(),
+	if(dirtyz > 0, ((("✦ " + format(dirtyz)) + " zone") + if(dirtyz == 1, "", "s")) + " dirty.", "")
+	)
+
+
+	let(offtrack, filter(prop("All Life Areas"), current.prop("Life Area off track")==true).length(),
+if(offtrack == 0, "", ((("⛔️ " + format(offtrack)) + " life area") + if(offtrack == 1, "", "s")) + " off track.")
+)
