@@ -14,3 +14,11 @@ let(dirtyz, filter(prop("All Zones"), current.prop("Dirty")==true).length(),
 	let(offtrack, filter(prop("All Life Areas"), current.prop("Life Area off track")==true).length(),
 if(offtrack == 0, "", ((("⛔️ " + format(offtrack)) + " life area") + if(offtrack == 1, "", "s")) + " off track.")
 )
+
+
+
+let(missed, filter(prop("All Entities"), current.prop("Birthday Missed")==true).length(),
+if(empty(missed), "", (("✦ " + format(missed)) + " missed birthday") + if(missed == 1, ".", "s."))
+)
+
+if(empty(prop("Birthdays Missed")), "", (("➤ " + format(prop("Birthdays Missed"))) + " missed birthday") + if(prop("Birthdays Missed") == 1, ".", "s."))
